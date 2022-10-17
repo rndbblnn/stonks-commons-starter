@@ -8,10 +8,6 @@ plugins {
 project.group = 'com.rndbblnn'
 project.version = '1.0.0'
 
-ext {
-    springBootVersion = '2.6.3'
-}
-
 allprojects {
     repositories {
         mavenCentral()
@@ -20,15 +16,24 @@ allprojects {
     sourceCompatibility = 1.8
 }
 dependencies {
-    annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor:2.6.3'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.6.3'
+    def springBootVersion = "2.7.4"
+    def lombokVersion = "1.18.24"
 
-    implementation 'org.springframework.boot:spring-boot:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-starter-cache:2.6.3'
-    implementation 'org.springframework.boot:spring-boot-devtools:2.6.3'
+    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor:$springBootVersion"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:$springBootVersion"
+
+    implementation "org.springframework.boot:spring-boot:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-autoconfigure:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-cache:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-devtools:$springBootVersion"
+
+    implementation "org.projectlombok:lombok:$lombokVersion"
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
 
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -36,16 +41,9 @@ dependencies {
     implementation 'org.apache.commons:commons-text:1.10.0'
     implementation 'commons-io:commons-io:2.11.0'
 
-    implementation 'org.projectlombok:lombok:1.18.20'
-
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
-    testCompileOnly 'org.projectlombok:lombok:1.18.22'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
-
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.assertj:assertj-core:3.12.2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.3'
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
 compileJava.dependsOn(processResources)
 
@@ -54,8 +52,8 @@ test {
 }
 
 java {
-    withSourcesJar()
-    withJavadocJar()
+//    withSourcesJar()
+//    withJavadocJar()
 }
 
 publishing {
@@ -64,9 +62,9 @@ publishing {
             from components.java
 
             pom {
-                name = 'Spring Boot Starter Handlebars'
-                description = 'Spring Boot auto-configuration for Handlebars template engine'
-                url = 'https://github.com/allegro/handlebars-spring-boot-starter'
+                name = 'Spring Boot Starter Boilerplate'
+                description = 'Spring Boot auto-configuration boilerplate'
+                url = 'https://github.com/rndbblnn/spring-boot-starter-boilerplate'
                 inceptionYear = '2015'
                 licenses {
                     license {
@@ -76,8 +74,8 @@ publishing {
                 }
                 developers {
                     developer {
-                        id = "plesiecki"
-                        name = "Paweł Lesiecki"
+                        id = "rndbblnn"
+                        name = "Arnaud Boulianne"
                     }
                 }
             }
