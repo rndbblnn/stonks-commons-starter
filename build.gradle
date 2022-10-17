@@ -20,8 +20,8 @@ allprojects {
     sourceCompatibility = 1.8
 }
 dependencies {
-    annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor:2.6.3'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.6.3'
 
     implementation 'org.springframework.boot:spring-boot:2.6.3'
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.6.3'
