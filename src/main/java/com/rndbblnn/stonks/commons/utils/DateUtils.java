@@ -90,12 +90,14 @@ public class DateUtils {
 
   public static ZonedDateTime trimHoursAndMinutes(ZonedDateTime zonedDateTime) {
     return zonedDateTime.withHour(0)
+        .withMinute(0)
         .withSecond(0)
         .withNano(0);
   }
 
   public static LocalDateTime trimHoursAndMinutes(LocalDateTime localDateTime) {
     return localDateTime.withHour(0)
+        .withMinute(0)
         .withSecond(0)
         .withNano(0);
   }
