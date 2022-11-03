@@ -23,6 +23,12 @@ public class DateUtils {
           .appendValue(ChronoField.MILLI_OF_SECOND, 3)
           .toFormatter();
 
+  public static final DateTimeFormatter ONLYDIGITS_NOTIME_DATEFORMAT =
+      new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4)
+          .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+          .appendValue(ChronoField.DAY_OF_MONTH, 2)
+          .toFormatter();
+
   public static final DateTimeFormatter YEARMONTH_DATEFORMAT = DateTimeFormatter.ofPattern("YY-MMM");
   public static final Comparator<LocalDateTime> LOCAL_DATE_COMPARATOR_ASC = new Comparator<LocalDateTime>() {
     @Override
