@@ -1,5 +1,6 @@
 package com.rndbblnn.stonks.commons.entity;
 
+import com.rndbblnn.stonks.commons.dto.CandleDto;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -42,5 +43,16 @@ public abstract class BaseCandle {
 
   @Column(name ="volume")
   private Long volume;
+
+  public BaseCandle build(CandleDto candleDto) {
+    this.setSymbol(candleDto.getSymbol())
+        .setOpen(candleDto.getOpen())
+        .setHigh(candleDto.getHigh())
+        .setLow(candleDto.getLow())
+        .setClose(candleDto.getClose())
+        .setVolume(candleDto.getVolume())
+        .setTickTime(candleDto.getTickTime());
+    return this;
+  }
 
 }
