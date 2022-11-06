@@ -1,8 +1,11 @@
 package com.rndbblnn.stonks.commons.entity;
 
 import com.rndbblnn.stonks.commons.dto.CandleDto;
+import com.rndbblnn.stonks.commons.dto.SecurityTypeEnum;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,6 +46,10 @@ public abstract class BaseCandle {
 
   @Column(name ="volume")
   private Long volume;
+
+  @Enumerated(EnumType.ORDINAL)
+  @Column(name ="security_type")
+  private SecurityTypeEnum securityType = SecurityTypeEnum.US_STOCK;
 
   public BaseCandle build(CandleDto candleDto) {
     this.setSymbol(candleDto.getSymbol())
