@@ -32,6 +32,8 @@ public class CandleUtils {
         resampleSize = 30;
         break;
       case tf_1h:
+        resampleSize = 60;
+        break;
       case tf_4h:
       case tf_d:
       case tf_4w:
