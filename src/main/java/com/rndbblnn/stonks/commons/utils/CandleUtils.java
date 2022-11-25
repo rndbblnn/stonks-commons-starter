@@ -8,13 +8,19 @@ import com.rndbblnn.stonks.commons.entity.Candle1mEntity;
 import com.rndbblnn.stonks.commons.entity.CandleDailyEntity;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.util.CollectionUtils;
 
 public class CandleUtils {
 
 
   public static final List<CandleDto> resample(List<? extends BaseCandle> entityList, TimeframeEnum timeframe) {
+
+    if (CollectionUtils.isEmpty(entityList)) {
+      return Collections.emptyList();
+    }
 
     // intra
     int resampleSize = 0;
